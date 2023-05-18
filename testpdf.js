@@ -12,8 +12,12 @@ const mergePdfs = async (p1, p2) => {
 //   await merger.add('pdf2.pdf', '4, 7, 8'); // merge the pages 4, 7 and 8
 //   await merger.add('pdf3.pdf', '3 to 5'); //merge pages 3 to 5 (3,4,5)
 //   await merger.add('pdf3.pdf', '3-5'); //merge pages 3 to 5 (3,4,5)
-  let d = new Date().getTime()
-  await merger.save(`public/${d}.pdf`); //save under given name and reset the internal document
+  let d = new Date();
+  let day = d.getDate();
+  let month = d.getMonth();
+  let year = d.getFullYear();
+  let currentTime = d.getTime();
+  await merger.save(`public/${day}${month}${year}${currentTime}.pdf`); //save under given name and reset the internal document
   return d;
   // Export the merged PDF as a nodejs Buffer
   // const mergedPdfBuffer = await merger.saveAsBuffer();
